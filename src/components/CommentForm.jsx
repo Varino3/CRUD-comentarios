@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { addComment } from '../actions';
+import { addComment } from '../store/actions';
 
 const CommentForm = ({ addComment }) => {
   const [text, setText] = useState('');
