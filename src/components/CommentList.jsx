@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { editComment, deleteComment } from '../actions';
+import { editComment, deleteComment } from '../store/actions';
 
 const CommentList = ({ comments, editComment, deleteComment }) => {
   const handleEdit = (comment) => {
