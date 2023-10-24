@@ -16,11 +16,11 @@ const CommentForm = ({ addComment }) => {
     <div>
       <input
         type="text"
-        placeholder="Escribe tu comentario"
+        placeholder="Escriba un comentario"
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
-      <button onClick={handleSubmit}>Enviar Comentario</button>
+      <button onClick={handleSubmit}>Enviar</button>
     </div>
   );
 };
