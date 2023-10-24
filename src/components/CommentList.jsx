@@ -1,4 +1,3 @@
-// src/components/CommentList.js
 import React from 'react';
 import { connect } from 'react-redux';
 import { editComment, deleteComment } from '../actions';
@@ -7,7 +6,6 @@ const CommentList = ({ comments, editComment, deleteComment }) => {
   const handleEdit = (comment) => {
     const editedText = prompt('Editar comentario:', comment.text);
     if (editedText !== null) {
-      // El usuario ingresó un texto nuevo, no canceló la edición
       editComment(comment.id, editedText);
     }
   };
