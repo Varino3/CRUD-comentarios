@@ -3,7 +3,6 @@ import React from 'react';
 import CommentList from './components/CommentList';
 import CommentForm from './components/CommentForm';
 import { useDispatch, useSelector } from 'react-redux';
-import { addComment, editComment, deleteComment } from './reducers/commentSlice';
 
 function App() {
   const dispatch = useDispatch();

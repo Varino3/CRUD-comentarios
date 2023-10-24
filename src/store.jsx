@@ -1,9 +1,6 @@
-// store.js
-import { configureStore } from '@reduxjs/toolkit';
-import commentReducer from './reducers/commentSlice';
+import { createStore } from 'redux';
+import rootReducer from './reducers';
 
-export const store = configureStore({
-    reducer: {
-        comments: commentReducer,
-    },
-});
+const store = createStore(rootReducer);
+
+export default store;

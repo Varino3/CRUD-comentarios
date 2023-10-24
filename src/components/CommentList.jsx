@@ -1,37 +1,32 @@
 // src/components/CommentList.js
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import Comment from './Comment';
-import { editComment, deleteComment } from '../reducers/commentSlice';
+import { connect } from 'react-redux';
+import { editComment, deleteComment } from '../actions';
 
-const CommentList = () => {
-    const dispatch = useDispatch();
-    const comments = useSelector((state) => state.comments);
+const CommentList = ({ comments, editComment, deleteComment }) => {
+  const handleEdit = (comment) => {
+    const editedText = prompt('Editar comentario:', comment.text);
+    if (editedText !== null) {
+      // El usuario ingresó un texto nuevo, no canceló la edición
+      editComment(comment.id, editedText);
+    }
+  };
 
-    const handleEdit = (id) => {
-        const newText = prompt('Editar comentario:');
-        if (newText) {
-            dispatch(editComment({ id, text: newText }));
-        }
-    };
-
-    const handleDelete = (id) => {
-        dispatch(deleteComment(id));
-    };
-
-    return (
-        <div>
-            {comments.map((comment) => (
-                <Comment
-                    key={comment.id}
-                    id={comment.id}
-                    text={comment.text}
-                    onEdit={handleEdit}
-                    onDelete={handleDelete}
-                />
-            ))}
+  return (
+    <div>
+      {comments.map((comment) => (
+        <div key={comment.id}>
+          <p>{comment.text}</p>
+          <button onClick={() => handleEdit(comment)}>Editar</button>
+          <button onClick={() => deleteComment(comment.id)}>Eliminar</button>
         </div>
-    );
+      ))}
+    </div>
+  );
 };
 
-export default CommentList;
+const mapStateToProps = (state) => ({
+  comments: state.comments,
+});
+
+export default connect(mapStateToProps, { editComment, deleteComment })(CommentList);
